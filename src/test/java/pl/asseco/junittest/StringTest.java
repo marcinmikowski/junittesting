@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
@@ -47,6 +48,7 @@ public class StringTest {
         System.out.println("SomeTest");
         var length = "ABCD".length();
         assertEquals(4, length);
+        assertThat(length).isEqualTo(4);
     }
 
     @Disabled
