@@ -20,4 +20,10 @@ public class BusinessClassImpl {
         int[] data = dataService.retrieveAll();
         return Arrays.stream(data).sum();
     }
+
+    public static String getName() {
+        return "ALA";
+    }
+
+
 }

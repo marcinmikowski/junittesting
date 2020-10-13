@@ -10,6 +10,11 @@ class DataServiceStub implements DataService {
     public int[] retrieveAll() {
         return new int[] {1,2,3,4};
     }
+
+    @Override
+    public void doSomeTest() {
+        System.out.println("Running");
+    }
 }
 
 public class BusinessClassStubTest {
