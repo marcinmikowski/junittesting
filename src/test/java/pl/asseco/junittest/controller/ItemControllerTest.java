@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import pl.asseco.junittest.business.ItemBusinessService;
 import pl.asseco.junittest.model.Item;
 
+import java.util.List;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,6 +54,22 @@ public class ItemControllerTest {
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"id\": 2,\"name\":\"Item 2\",\"quantity\":10,\"price\":10}"))
+                .andReturn();
+    }
+
+    @Test
+    public void itemControllerDBTest() throws Exception {
+        when(itemBusinessService.retriveAllItems()).thenReturn(
+                List.of(new Item(2, "Item 2", 10, 10))
+        );
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/db-items")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{\"id\": 2,\"name\":\"Item 2\",\"quantity\":10,\"price\":10}]"))
                 .andReturn();
     }
 }

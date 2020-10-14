@@ -3,6 +3,7 @@ package pl.asseco.junittest.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.util.Objects;
 
 @Entity
 public class Item {
@@ -60,5 +61,22 @@ public class Item {
         sb.append(", price=").append(price);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id &&
+                quantity == item.quantity &&
+                price == item.price &&
+                value == item.value &&
+                Objects.equals(name, item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, quantity, price, value);
     }
 }

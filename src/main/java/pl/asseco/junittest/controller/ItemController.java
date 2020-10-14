@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.asseco.junittest.business.ItemBusinessService;
 import pl.asseco.junittest.model.Item;
 
+import java.util.List;
+
 @RestController
 public class ItemController {
 
@@ -22,5 +24,10 @@ public class ItemController {
     public Item getBSItem() {
         System.out.println("Returning ");
         return itemBusinessService.returnsHardcodedItem();
+    }
+
+    @GetMapping("/db-items")
+    public List<Item> getAllItems() {
+        return itemBusinessService.retriveAllItems();
     }
 }

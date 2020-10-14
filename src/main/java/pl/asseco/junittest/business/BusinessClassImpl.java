@@ -4,7 +4,7 @@ import pl.asseco.junittest.data.DataService;
 
 import java.util.Arrays;
 
-public class BusinessClassImpl {
+public class    BusinessClassImpl {
 
     private DataService dataService;
 
